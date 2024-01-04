@@ -25,6 +25,12 @@ function Login() {
   const { email, password } = formValue;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+ // 200537329771-mumcer4mnko5qmjlj67593tcenlj9v5f.apps.googleusercontent.com
+ const devEnv = import.meta.env.MODE !== "production";
+
+ const clientId = devEnv ? "200537329771-2cdpt86gint14oisik38el44gtuevnqh.apps.googleusercontent.com":
+  "200537329771-mumcer4mnko5qmjlj67593tcenlj9v5f.apps.googleusercontent.com"
+
 
   useEffect(() => {
     error && toast.error(error);
@@ -112,7 +118,7 @@ function Login() {
           </MDBValidation>
           <br />
           <GoogleLogin
-            clientId="200537329771-2cdpt86gint14oisik38el44gtuevnqh.apps.googleusercontent.com"
+            clientId={clientId}
             render={(renderProps) => (
               <MDBBtn
                 style={{ width: "100%" }}
